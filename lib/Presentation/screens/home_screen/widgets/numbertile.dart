@@ -9,7 +9,7 @@ class NumberTile extends StatelessWidget {
   final Color? textcolor;
   final Alignment? textAlignment;
   final IconData? icon;
-  final Function() ontap;
+  final VoidCallback ontap;
 
   const NumberTile({
     super.key,

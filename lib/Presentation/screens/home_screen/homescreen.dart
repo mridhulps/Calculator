@@ -3,7 +3,6 @@ import 'package:calculator/Core/constants/screen_ratio.dart';
 import 'package:calculator/Presentation/refactors/textwidget.dart';
 import 'package:calculator/Presentation/screens/home_screen/widgets/buildbuttons.dart';
 import 'package:calculator/providers/calculator_provider.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -12,6 +11,8 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final provider = ref.watch(calculatorProvider);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Calculator'),
@@ -30,24 +31,30 @@ class HomeScreen extends ConsumerWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                  //EQUATION
                   Row(
                     children: [
-                      CustomText(
-                        string: ref.watch(calculatorProvider).toString(),
-                        paddingbottom: 25,
-                        paddingleft: 10,
-                        fontsize: 40,
+                      Flexible(
+                        child: CustomText(
+                          string: provider.equations,
+                          paddingbottom: 25,
+                          paddingleft: 10,
+                          fontsize: 40,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       )
                     ],
                   ),
-                  const Row(
+                  //RESULT
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       CustomText(
-                        string: '0',
+                        string: provider.results,
                         paddingbottom: 30,
                         paddingright: 10,
                         fontsize: 40,
+                        overflow: TextOverflow.ellipsis,
                       )
                     ],
                   )
@@ -67,7 +74,7 @@ class HomeScreen extends ConsumerWidget {
                       borderRadius: BorderRadius.circular(20),
                       color: const Color.fromRGBO(38, 38, 38, 1)),
                   child: BuildButtons(
-                    state: ref,
+                    ref: ref,
                   ),
                 ))
           ],

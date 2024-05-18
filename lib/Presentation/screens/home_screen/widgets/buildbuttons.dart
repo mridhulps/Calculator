@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:calculator/Core/constants/colors.dart';
 import 'package:calculator/Presentation/refactors/iconwidget.dart';
 import 'package:calculator/Presentation/refactors/textwidget.dart';
@@ -12,8 +10,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BuildButtons extends StatelessWidget {
-  final WidgetRef? state;
-  BuildButtons({super.key, this.state});
+  final WidgetRef ref;
+  BuildButtons({super.key, required this.ref});
 
   final List<String> digitList = [
     'AC',
@@ -85,13 +83,7 @@ class BuildButtons extends StatelessWidget {
                                               ? FontWeight.bold
                                               : FontWeight.normal,
                                         ),
-              ontap: () {
-                log(digits);
-
-                if (state != null) {
-                  state!.read(calculatorProvider.notifier).state++;
-                }
-              },
+              ontap: () => onClick(digits, ref),
             );
           },
           itemCount: 19,
@@ -112,4 +104,18 @@ bool isoperator(String digits) {
   ];
 
   return operators.contains(digits);
+}
+
+onClick(String digits, WidgetRef ref) {
+  switch (digits) {
+    case 'AC':
+      ref.read(calculatorProvider.notifier).clearAll(digits);
+      break;
+    case '<':
+      ref.read(calculatorProvider.notifier).delete();
+    case '':
+    //ref.read(calculatorProvider.notifier).isoperator(digits);
+    default:
+      ref.read(calculatorProvider.notifier).addEquation(digits);
+  }
 }
