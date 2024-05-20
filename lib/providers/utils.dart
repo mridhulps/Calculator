@@ -20,7 +20,7 @@ class Utils {
     bool issign = false;
 
     for (var i in equation.substring(equation.length - 1).split(' ')) {
-      if (isOperator(i)) {
+      if (isOperator(i) == true) {
         issign = true;
       } else {
         issign = false;

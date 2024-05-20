@@ -79,11 +79,7 @@ class BuildButtons extends StatelessWidget {
                                             fontsize: Utils.isOperator(digits)
                                                 ? 20
                                                 : 17,
-                                            fontweight: digits == 'AC' ||
-                                                    digits == 'x' ||
-                                                    digits == '-' ||
-                                                    digits == '+' ||
-                                                    digits == '+'
+                                            fontweight: Utils.isOperator(digits)
                                                 ? FontWeight.bold
                                                 : FontWeight.normal,
                                           ),
@@ -97,17 +93,21 @@ class BuildButtons extends StatelessWidget {
 }
 
 void onClick(String digits, WidgetRef ref) {
+  final provider = ref.read(calculatorProvider.notifier);
+
   switch (digits) {
     case 'AC':
-      ref.read(calculatorProvider.notifier).clearAll(digits);
+      provider.reset();
 
       break;
     case '<':
-      ref.read(calculatorProvider.notifier).delete();
+      provider.delete();
       break;
     case '=':
-      null;
+      provider.result(isEqualpressed: true);
+
     default:
-      ref.read(calculatorProvider.notifier).addEquation(digits);
+      provider.addEquation(digits);
+      break;
   }
 }

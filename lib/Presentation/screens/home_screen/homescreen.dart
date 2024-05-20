@@ -4,6 +4,7 @@ import 'package:calculator/Presentation/refactors/textwidget.dart';
 import 'package:calculator/Presentation/screens/home_screen/widgets/buildbuttons.dart';
 import 'package:calculator/providers/calculator_provider.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -49,12 +50,15 @@ class HomeScreen extends ConsumerWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      CustomText(
-                        string: provider.results,
-                        paddingbottom: 30,
-                        paddingright: 10,
-                        fontsize: 40,
-                        overflow: TextOverflow.ellipsis,
+                      Flexible(
+                        child: CustomText(
+                          string: provider.results,
+                          paddingbottom: 30,
+                          paddingright: 10,
+                          fontsize: 40,
+                          color: Colors.white60,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       )
                     ],
                   )

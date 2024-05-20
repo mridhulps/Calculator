@@ -1,20 +1,18 @@
 // ignore_for_file: file_names
 
 class Calculator {
-  bool isoperatorAppend;
   String equations;
   String results;
+  bool isequalpressed;
 
   Calculator(
-      {this.equations = '0',
-      this.results = '0',
-      this.isoperatorAppend = false});
+      {this.equations = '0', this.results = '0', this.isequalpressed = false});
 
 //COPYWITH METHODE;
-  Calculator copy({String? equation, String? result, bool? isoperatorAppend}) {
+  Calculator copy({String? equation, String? result, bool? isequalpressed}) {
     return Calculator(
         equations: equation ?? equations,
         results: result ?? results,
-        isoperatorAppend: isoperatorAppend ?? this.isoperatorAppend);
+        isequalpressed: isequalpressed ?? this.isequalpressed);
   }
 }
