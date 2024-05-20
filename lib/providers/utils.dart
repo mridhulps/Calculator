@@ -1,8 +1,5 @@
-import 'dart:developer';
-
-import 'package:calculator/Presentation/screens/home_screen/widgets/buildbuttons.dart';
-
 class Utils {
+  //OPERATOR ISTRUE OR FALSE;
   static bool isOperator(String digits) {
     final List<String> operators = [
       '%',
@@ -17,18 +14,19 @@ class Utils {
     return iscontaine;
   }
 
+  //OPERATOR FIND AT END IS TRUE OR FALSE;
+
   static bool isOperatorAtEnd(String equation) {
     bool issign = false;
 
-    print(equation.toString());
+    for (var i in equation.substring(equation.length - 1).split(' ')) {
+      if (isOperator(i)) {
+        issign = true;
+      } else {
+        issign = false;
+      }
+    }
 
-    // for (String i in equation.split(' ')) {
-    //   if (isoperator(i)) {
-    //     issign = true;
-    //   } else {
-    //     issign = false;
-    //   }
-    // }
     return issign;
   }
 }
