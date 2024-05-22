@@ -11,17 +11,19 @@ class NumberTile extends StatelessWidget {
   final IconData? icon;
   final VoidCallback ontap;
 
-  const NumberTile({
-    super.key,
-    required this.child,
-    required this.ontap,
-    this.fontsize,
-    this.fontweight,
-    this.tilecolor,
-    this.textcolor,
-    this.icon,
-    this.textAlignment = Alignment.center,
-  });
+  final ValueKey? keys;
+
+  const NumberTile(
+      {super.key,
+      required this.child,
+      required this.ontap,
+      this.fontsize,
+      this.fontweight,
+      this.tilecolor,
+      this.textcolor,
+      this.icon,
+      this.textAlignment = Alignment.center,
+      this.keys});
 
   @override
   Widget build(BuildContext context) {

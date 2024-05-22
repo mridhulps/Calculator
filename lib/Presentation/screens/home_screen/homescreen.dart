@@ -16,7 +16,12 @@ class HomeScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Calculator'),
+        title: const CustomText(
+          string: 'Calculator',
+          texttype: TextType.titleLarge,
+          fonttype: FontType.aboretofont,
+          fontweight: FontWeight.bold,
+        ),
         titleTextStyle: const TextStyle(color: textColor, fontSize: 20),
         //centerTitle: true,
         backgroundColor: appbarcolor,

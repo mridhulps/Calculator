@@ -32,6 +32,7 @@ dependencies:
     sdk: flutter
   google_fonts: ^6.2.1
   font_awesome_flutter: ^10.7.0
+  reorderable_grid_view: ^2.2.8
   flutter_riverpod: ^2.5.1
   math_expressions: 
   # The following adds the Cupertino Icons font to your application.
